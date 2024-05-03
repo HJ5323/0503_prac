@@ -9,17 +9,22 @@
 
 using namespace std;
 
-struct student_personal_info
+//2. namespace 이름으로 감싸기
+namespace MyFunctions
 {
-    string name;
-    float age;
-    string birthday;
-};
+    struct student_personal_info
+    {
+        string name;
+        float age;
+        string birthday;
+    };
 
-void InputStudentInfo(vector<student_personal_info>& students);
-void PrintStudentInfo(const vector<student_personal_info>& students);
-void PrintAverAge(const vector<student_personal_info>& students);
-void PrintEarlyBirth(const vector<student_personal_info>& students);
-void EditStudentInfo(vector<student_personal_info>& students);
+    void InputStudentInfo(vector<student_personal_info>& students);
+    void PrintStudentInfo(const vector<student_personal_info>& students);
+    void PrintAverAge(const vector<student_personal_info>& students);
+    void PrintEarlyBirth(const vector<student_personal_info>& students);
+    void EditStudentInfo(vector<student_personal_info>& students);
+}
+
 
 #endif
