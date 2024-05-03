@@ -77,16 +77,17 @@ void PrintEarlyBirth(const vector<student_personal_info>& students)
 // 학생 정보 편집 (이름으로 검색하여 나이 또는 생일 변경)
 void EditStudentInfo(vector<student_personal_info>& students)
 {
-    while (true)
+    string SearchName;
+    bool ExitRequest = false;
+    while (!ExitRequest)
     {
-        string SearchName;
         cout << "편집할 학생의 이름을 입력하세요. (편집 종료 : exit 입력): ";
         getline(cin, SearchName);
-        cin.ignore();
 
         if (SearchName == "exit")
         {
             cout << "편집을 종료합니다." << endl;
+            ExitRequest = false;
             return;
         }
 
@@ -97,7 +98,7 @@ void EditStudentInfo(vector<student_personal_info>& students)
             {
                 found = true;
 
-                while (true)
+                while (!ExitRequest)
                 {
                     int EditNum;
                     cout << "편집할 항목을 선택해 주세요. (1: 나이, 2: 생일, 3: 해당 편집 종료) : ";
@@ -124,23 +125,22 @@ void EditStudentInfo(vector<student_personal_info>& students)
 
                     else if (EditNum == 3) // 종료
                     {
-                        cout << students[i].name << "의 편집을 종료합니다." << endl;
+                        cout << students[i].name << "의 편집을 종료합니다.\n" << endl;
+                        cin.ignore();
                         break;
                     }
 
                     else
                     {
-                        cout << "잘못된 입력입니다." << endl;
+                        cout << "잘못된 입력입니다.\n" << endl;
                     }
-
                 }
-
             }
         }
 
-        if (!found)
+        if (!found && !ExitRequest && SearchName != "exit")
         {
-            cout << "해당하는 이름의 학생이 없습니다." << endl;
+            cout << "해당하는 이름의 학생이 없습니다.\n" << endl;
         }
 
     }
